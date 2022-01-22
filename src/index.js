@@ -1,16 +1,10 @@
 const express = require('express');
-const handlebars = require('express-handlebars');
-const path = require('path');
-
+require('./config/handlebars')(app);
 const app = express();
 
-//app.set('views', path.resolve(__dirname + '/views'));
-const hbs = handlebars.create({ extname: '.hbs' })
-
-app.set('views', path.resolve('./src/views'))
-
-app.engine('.hbs', hbs.engine);
-app.set('view engine', '.hbs');
+//const initHandlebars = require('./config/handlebars');
+//initHandlebars(app);
+// - горните 2 са = require('./config/handlebars')(app);
 
 app.all('/', (req, res) => {
     res.render('index')
