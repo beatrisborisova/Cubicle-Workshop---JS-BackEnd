@@ -1,10 +1,13 @@
 const express = require('express');
-require('./config/handlebars')(app);
 const app = express();
+require('./config/handlebars')(app);
+const path = require('path');
 
 //const initHandlebars = require('./config/handlebars');
 //initHandlebars(app);
 // - горните 2 са = require('./config/handlebars')(app);
+
+app.use(express.static(path.resolve(__dirname + '/public')));
 
 app.all('/', (req, res) => {
     res.render('index')
