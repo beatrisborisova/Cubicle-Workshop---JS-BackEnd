@@ -21,7 +21,19 @@ const search = (req, res) => {
 
     let cubes = cubeService.search(search, from, to);
 
-    res.render('index', { cubes });
+    /*
+    if (cubes.length < 1) {
+        res.redirect('/')
+    }
+    */
+   
+    res.render('index', {
+        title: 'SEARCH',
+        search,
+        from,
+        to,
+        cubes
+    });
 }
 
 router.get('/', home);
